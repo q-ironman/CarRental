@@ -17,6 +17,10 @@ namespace Repository.Concrete
         {
             var res = base.Search(filter).AsQueryable();
 
+            if (searchEntity.Id.HasValue)
+            {
+                res = res.Where(c => c.Id == searchEntity.Id);
+            }
             if (searchEntity.BrandId.HasValue)
                 res = res.Where(c => c.BrandId == searchEntity.BrandId);
             if (searchEntity.ModelYear.HasValue)
@@ -33,7 +37,7 @@ namespace Repository.Concrete
             return res.ToList();
         }
 
-        public List<CarDetailsDto> SearchDetail(CarSearch searchEntity = null, Expression<Func<CarDetailsDto,bool>>? filter = null)
+        public List<CarDetailsDto> SearchDetail(CarSearch searchEntity, Expression<Func<CarDetailsDto,bool>>? filter = null)
         {
             using (CarContext db = new CarContext())
             {
@@ -46,11 +50,14 @@ namespace Repository.Concrete
                                   && (string.IsNullOrEmpty(searchEntity.Description) || c.Description.Contains(searchEntity.Description)))
                               select new CarDetailsDto
                               {
+                                  Id = c.Id,
                                   BrandName = b.Name,
                                   ColorName = co.Name,
                                   Description = c.Description,
                                   DailyPrice = c.DailyPrice,
-                                  ModelYear = c.ModelYear
+                                  ModelYear = c.ModelYear,
+                                  BrandId = b.Id,
+                                  ColorId = co.Id
                               };
                 if (filter != null)
                     res = res.Where(filter);

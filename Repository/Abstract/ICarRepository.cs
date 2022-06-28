@@ -12,7 +12,7 @@ namespace Repository.Abstract
 {
     public interface ICarRepository : IEntityRepository<Car,CarSearch>
     {
-        List<CarDetailsDto> SearchDetail(CarSearch searchEntity = null, Expression<Func<CarDetailsDto,bool>>? filter = null);
+        List<CarDetailsDto> SearchDetail(CarSearch searchEntity, Expression<Func<CarDetailsDto,bool>>? filter = null);
 
     }
 }

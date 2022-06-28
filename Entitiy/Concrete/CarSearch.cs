@@ -9,11 +9,16 @@ namespace Entity.Concrete
 {
     public class CarSearch : IEntitySearch
     {
+        private int? _id;
         private short? _modelYear;
         private string _description;
         private int? _brandId;
         private int? _colorId;
-
+        public int? Id
+        {
+            get => _id;
+            set => _id = value;
+        }
         public int? ColorId
         {
             get => _colorId;

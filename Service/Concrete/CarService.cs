@@ -33,9 +33,9 @@ namespace Service.Concrete
             
         }
 
-        public void Delete(Car car)
+        public void Delete(Car entity)
         {
-            _carRepository.Delete(car);
+            _carRepository.Delete(entity);
         }
 
         public List<Car> Search(CarSearch searcEntity, Expression<Func<Car, bool>>? filter)

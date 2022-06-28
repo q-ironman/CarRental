@@ -35,7 +35,7 @@ namespace Core.Repository.EntityFramework
             }
         }
 
-        public List<T> Search(Expression<Func<T, bool>>? filter = null ) 
+        public List<T> Search(Expression<Func<T, bool>>? filter = null) 
         {
             using (TContext db = new TContext())
             {

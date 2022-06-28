@@ -14,8 +14,18 @@ namespace Entity.Concrete.Dtos
         private string _colorName;
         private decimal _dailyPrice;
         private short _modelYear;
+        private int _id;
+        private int _brandId;
+        private int _colorId;
 
         
+
+        public int Id
+        {
+            get => _id;
+            set => _id = value;
+        }
+
 
         public string BrandName
         {
@@ -44,7 +54,17 @@ namespace Entity.Concrete.Dtos
             set => _colorName = value;
         }
 
-        
+        public int BrandId
+        {
+            get => _brandId;
+            set => _brandId = value;
+        }
+
+        public int ColorId
+        {
+            get => _colorId;
+            set => _colorId = value;
+        }
 
 
     }
