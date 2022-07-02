@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Core.DependencyResolvers.PrimativeWay;
+using Core.Utilities.Result;
 using Entity.Concrete;
 using Entity.Concrete.Dtos;
 using Repository.Abstract;
@@ -16,41 +17,47 @@ namespace Service.Concrete
     public class CarService : ICarService
     {
         ICarRepository _carRepository;
-        public CarService()
+        public CarService(ICarRepository carRepository)
         {
-            _carRepository = ServiceActivator.Get<ICarRepository>();
+            _carRepository = carRepository;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
             if (car.Description.Length > 2)
             {
                 if (car.DailyPrice > 0)
                 {
                     _carRepository.Add(car);
+                    return new SuccessResult();
                 }
             }
-            
+
+            return new FailResult();
+
+
         }
 
-        public void Delete(Car entity)
+        public IResult Delete(Car entity)
         {
             _carRepository.Delete(entity);
+            return new SuccessResult();
         }
 
-        public List<Car> Search(CarSearch searcEntity, Expression<Func<Car, bool>>? filter)
+        public IDataResult<List<Car>> Search(CarSearch searcEntity, Expression<Func<Car, bool>>? filter)
         {
-            return _carRepository.Search(searcEntity, filter).ToList();
+            return new SuccesDataResult<List<Car>>(_carRepository.Search(searcEntity, filter).ToList());
         }
 
-        public List<CarDetailsDto> SearchDetails(CarSearch searcEntity = null, Expression<Func<CarDetailsDto, bool>>? filter = null)
+        public IDataResult<List<CarDetailsDto>> SearchDetails(CarSearch searcEntity = null, Expression<Func<CarDetailsDto, bool>>? filter = null)
         {
-            return _carRepository.SearchDetail(searcEntity, filter);
+            return new SuccesDataResult<List<CarDetailsDto>>(_carRepository.SearchDetail(searcEntity, filter));
         }
 
-        public void Update(Car car)
+        public IResult Update(Car car)
         {
             _carRepository.Update(car);
+            return new SuccessResult();
         }
     }
 }

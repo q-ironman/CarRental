@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Core.DependencyResolvers.PrimativeWay;
+using Core.Utilities.Result;
 using Entity.Concrete;
 using Entity.Concrete.Color;
 using Repository.Abstract;
@@ -19,24 +20,27 @@ namespace Service.Concrete
         {
             _colorRepository = ServiceActivator.Get<IColorRepository>();
         }
-        public void Add(Color color)
+        public IResult Add(Color color)
         {
             _colorRepository.Add(color);
+            return new SuccessResult();
         }
 
-        public void Update(Color color)
+        public IResult Update(Color color)
         {
             _colorRepository.Update(color);
+            return new SuccessResult();
         }
 
-        public void Delete(Color color)
+        public IResult Delete(Color color)
         {
             _colorRepository.Delete(color);
+            return new SuccessResult();
         }
 
-        public List<Color> Search(ColorSearch searcEntity, Expression<Func<Color, bool>>? filter = null)
+        public IDataResult<List<Color>> Search(ColorSearch searcEntity, Expression<Func<Color, bool>>? filter = null)
         {
-            return _colorRepository.Search(searcEntity, filter);
+            return new SuccesDataResult<List<Color>>(_colorRepository.Search(searcEntity, filter));
         }
     }
 }

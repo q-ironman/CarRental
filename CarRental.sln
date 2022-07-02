@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental", "CarRental\CarRental.csproj", "{75C0CD57-AD68-4A87-84D6-D25D9FD2C8FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRental", "CarRental\CarRental.csproj", "{75C0CD57-AD68-4A87-84D6-D25D9FD2C8FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{21C4D4D8-C2F3-4E6A-92EE-89607138CF56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{21C4D4D8-C2F3-4E6A-92EE-89607138CF56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{DA6CC0E2-3900-4D10-BEDC-191AD678A951}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{DA6CC0E2-3900-4D10-BEDC-191AD678A951}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{5C4FD347-1730-47A0-BD79-242720396453}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{5C4FD347-1730-47A0-BD79-242720396453}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entitiy\Entity.csproj", "{8C3389A4-1FEB-46CF-813C-37F23241A64A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity", "Entitiy\Entity.csproj", "{8C3389A4-1FEB-46CF-813C-37F23241A64A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{83AAC97B-3228-4BF0-AFD6-4E30D3DF7CE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{8C3389A4-1FEB-46CF-813C-37F23241A64A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C3389A4-1FEB-46CF-813C-37F23241A64A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C3389A4-1FEB-46CF-813C-37F23241A64A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83AAC97B-3228-4BF0-AFD6-4E30D3DF7CE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83AAC97B-3228-4BF0-AFD6-4E30D3DF7CE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83AAC97B-3228-4BF0-AFD6-4E30D3DF7CE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83AAC97B-3228-4BF0-AFD6-4E30D3DF7CE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

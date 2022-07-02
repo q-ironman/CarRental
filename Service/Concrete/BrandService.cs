@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Core.DependencyResolvers.PrimativeWay;
+using Core.Utilities.Result;
 using Entity.Concrete.Brand;
 using Repository.Abstract;
 using Service.Abstract;
@@ -18,24 +19,27 @@ namespace Service.Concrete
         {
             _brandRepository = ServiceActivator.Get<IBrandRepository>();
         }
-        public void Add(Brand brand)
+        public IResult Add(Brand brand)
         {
             _brandRepository.Add(brand);
+            return new SuccessResult();
         }
 
-        public void Delete(Brand brand)
+        public IResult Delete(Brand brand)
         {
             _brandRepository.Delete(brand);
+            return new SuccessResult();
         }
 
-        public List<Brand> Search(BrandSearch searchEntity, Expression<Func<Brand, bool>>? filter = null)
+        public IDataResult<List<Brand>> Search(BrandSearch searchEntity, Expression<Func<Brand, bool>>? filter = null)
         {
-            return _brandRepository.Search(searchEntity, filter);
+            return new SuccesDataResult<List<Brand>>(_brandRepository.Search(searchEntity, filter));
         }
 
-        public void Update(Brand brand)
+        public IResult Update(Brand brand)
         {
             _brandRepository.Update(brand);
+            return new SuccessResult();
         }
     }
 }

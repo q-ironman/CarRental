@@ -38,12 +38,12 @@ namespace CarRental
             comboBox_Color.Items.Add("All");
             var colors = _colorService.Search(srchColor);
             var brands = _brandService.Search(srchBrand);
-            foreach (var brand in brands)
+            foreach (var brand in brands.Data)
             {
                 comboBox_Brand.Items.Add(new KeyValuePair<int, string>(brand.Id, brand.Name));
             }
 
-            foreach (var color in colors)
+            foreach (var color in colors.Data)
             {
                 comboBox_Color.Items.Add(new KeyValuePair<int, string>(color.Id, color.Name));
             }
@@ -55,7 +55,7 @@ namespace CarRental
         private void button_Search_Click(object sender, EventArgs e)
         {
             srch.Description = textBox_Name.Text;
-            dataGridView1.DataSource = _carService.SearchDetails(srch);
+            dataGridView1.DataSource = _carService.SearchDetails(srch).Data;
         }
 
         private void comboBox_Brand_SelectedIndexChanged(object sender, EventArgs e)

@@ -46,12 +46,12 @@ namespace CarRental
             comboBox_Color.DisplayMember = "Value";
             var colors = _colorService.Search(srchColor);
             var brands = _brandService.Search(srchBrand);
-            foreach (var brand in brands)
+            foreach (var brand in brands.Data)
             {
                 comboBox_Brand.Items.Add(new KeyValuePair<int, string>(brand.Id, brand.Name));
             }
 
-            foreach (var color in colors)
+            foreach (var color in colors.Data)
             {
                 comboBox_Color.Items.Add(new KeyValuePair<int, string>(color.Id, color.Name));
             }
@@ -60,7 +60,7 @@ namespace CarRental
             {
                 search = new CarSearch
                     { Id = this.Id, BrandId = null, ColorId = null, Description = null, ModelYear = null };
-                addUpdateCar = _carService.Search(search)[0];
+                addUpdateCar = _carService.Search(search).Data[0];
                 comboBox_Brand.SelectedIndex=addUpdateCar.BrandId;
                 comboBox_Color.SelectedIndex=addUpdateCar.ColorId;
                 textBox_DailyPrice.Text = addUpdateCar.DailyPrice.ToString();

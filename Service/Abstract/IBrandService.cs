@@ -4,15 +4,16 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Utilities.Result;
 using Entity.Concrete.Brand;
 
 namespace Service.Abstract
 {
     public interface IBrandService
     {
-        void Add(Brand brand);
-        void Update(Brand brand);
-        void Delete(Brand brand);
-        List<Brand> Search(BrandSearch searchEntity, Expression<Func<Brand, bool>>? filter = null);
+        IResult Add(Brand brand);
+        IResult Update(Brand brand);
+        IResult Delete(Brand brand);
+        IDataResult<List<Brand>> Search(BrandSearch searchEntity, Expression<Func<Brand, bool>>? filter = null);
     }
 }
